@@ -1,5 +1,5 @@
 import React, { FC, useState, useEffect } from 'react';
-import { MenuItem } from '../menu-item/menu-item.component';
+import MenuItem from '../menu-item/menu-item.component';
 
 import './directory.styles.scss';
 
@@ -20,7 +20,7 @@ export const Directory: FC = () => {
         title: 'hats',
         imageUrl: 'https://i.ibb.co/cvpntL1/hats.png',
         id: 1,
-        linkUrl: 'shop/hats',
+        linkUrl: 'shop',
       },
       {
         title: 'jackets',
@@ -54,8 +54,8 @@ export const Directory: FC = () => {
 
   return (
     <div className="directory-menu">
-      {advSection.map(({ title, imageUrl, size, id }) => (
-        <MenuItem key={id} title={title} imageUrl={imageUrl} size={size} />
+      {advSection.map(({ id, ...otherSectionProps }) => (
+        <MenuItem key={id} {...otherSectionProps} />
       ))}
     </div>
   );
