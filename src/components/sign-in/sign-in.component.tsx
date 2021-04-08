@@ -1,5 +1,9 @@
 import React, { FormEvent, FC, useState } from 'react';
 
+import { FormInput } from '../form-input/form-input.component';
+import { CustomButton } from '../custom-button/custom-button.component';
+import './sign-in.styles.scss';
+
 interface ISignInState {
   email: string;
   password: string;
@@ -16,7 +20,7 @@ export const SignIn: FC = () => {
 
   const handleChange = (event: FormEvent<HTMLInputElement>) => {
     const { value, name } = (event.target as unknown) as HTMLInputElement;
-    setSignInData((prevState)=> ({...prevState, [name]: value}));
+    setSignInData((prevState) => ({ ...prevState, [name]: value }));
   };
 
   return (
@@ -25,20 +29,21 @@ export const SignIn: FC = () => {
       <h2>I already have an account</h2>
       <span>Sign in with your email and password</span>
       <form action="" onSubmit={handleSubmit}>
-        <input
+        <FormInput
           type="email"
           name="email"
           value={signInData.email}
-          onChange={handleChange}
+          handleChange={handleChange}
+          label="email"
         />
-        <label>Email</label>
-        <input
+        <FormInput
           type="password"
           name="password"
           value={signInData.password}
-          onChange={handleChange}
+          handleChange={handleChange}
+          label="password"
         />
-        <label>Password</label>
+        <CustomButton />
       </form>
     </div>
   );
