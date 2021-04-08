@@ -1,8 +1,8 @@
 import React, { FormEvent, FC, useState } from 'react';
 
 interface ISignInState {
-  email?: string;
-  password?: string;
+  email: string;
+  password: string;
 }
 export const SignIn: FC = () => {
   const [signInData, setSignInData] = useState<ISignInState>({
@@ -16,8 +16,7 @@ export const SignIn: FC = () => {
 
   const handleChange = (event: FormEvent<HTMLInputElement>) => {
     const { value, name } = (event.target as unknown) as HTMLInputElement;
-    let userData = { [name]: value };
-    setSignInData(userData);
+    setSignInData((prevState)=> ({...prevState, [name]: value}));
   };
 
   return (
